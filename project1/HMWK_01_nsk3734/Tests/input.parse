@@ -1,0 +1,6 @@
+(   1) PROGRAM
+(   1)   STATEMENT (EXPRESSION)
+(   1)     BINARY_OP '^'
+(   1)       UNARY_OP '-'
+(   1)         LITERAL 'Integer' 3
+(   1)       LITERAL 'Integer' 5

@@ -1,0 +1,43 @@
+(   2) PROGRAM
+(   2)   STATEMENT (EXPRESSION)
+(   2)     BINARY_OP '='
+(   2)       IDENTIFIER 'a'
+(   2)       BINARY_OP '+'
+(   2)         LITERAL 'Integer' 1
+(   2)         LITERAL 'Integer' 2
+(   3)   STATEMENT (EXPRESSION)
+(   3)     BINARY_OP '='
+(   3)       IDENTIFIER 'b'
+(   3)       BINARY_OP '+'
+(   3)         BINARY_OP '+'
+(   3)           BINARY_OP '+'
+(   3)             LITERAL 'Integer' 1
+(   3)             LITERAL 'Integer' 2
+(   3)           LITERAL 'Integer' 3
+(   3)         LITERAL 'Integer' 4
+(   6)   STATEMENT (EXPRESSION)
+(   6)     BINARY_OP '='
+(   6)       IDENTIFIER 'c'
+(   6)       BINARY_OP '+'
+(   6)         IDENTIFIER 'a'
+(   6)         IDENTIFIER 'b'
+(   6)   STATEMENT (EXPRESSION)
+(   6)     BINARY_OP '='
+(   6)       IDENTIFIER 'e'
+(   6)       BINARY_OP '+'
+(   6)         LITERAL 'Integer' 88
+(   6)         LITERAL 'Integer' 77
+(   9)   STATEMENT (EXPRESSION)
+(   9)     BINARY_OP '='
+(   9)       IDENTIFIER 'd'
+(   9)       BINARY_OP '+'
+(   9)         BINARY_OP '+'
+(   9)           BINARY_OP '+'
+(   9)             LITERAL 'Integer' 1
+(   9)             LITERAL 'Integer' 2
+(   9)           BINARY_OP '+'
+(   9)             LITERAL 'Integer' 3
+(   9)             LITERAL 'Integer' 4
+(   9)         BINARY_OP '+'
+(   9)           LITERAL 'Integer' 5
+(   9)           LITERAL 'Integer' 6

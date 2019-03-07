@@ -1,0 +1,780 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list semicolon_opt
+Rule 2     semicolon_opt -> epsilon
+Rule 3     semicolon_opt -> SEMICOLON
+Rule 4     statement -> expression
+Rule 5     statement_list -> statement_list SEMICOLON statement
+Rule 6     statement_list -> statement
+Rule 7     identifier -> ID
+Rule 8     expression -> expression PLUS expression
+Rule 9     expression -> identifier EQUALS expression
+Rule 10    expression -> expression MINUS expression
+Rule 11    expression -> expression DIVIDE expression
+Rule 12    expression -> expression MULTIPLY expression
+Rule 13    expression -> expression MOD expression
+Rule 14    expression -> expression EXPONENT expression
+Rule 15    expression -> MINUS expression
+Rule 16    expression -> PLUS expression
+Rule 17    expression -> LPAREN expression RPAREN
+Rule 18    expression -> INT_LITERAL
+Rule 19    expression -> identifier
+Rule 20    epsilon -> <empty>
+
+Terminals, with rules where they appear
+
+DIVIDE               : 11
+EQUALS               : 9
+EXPONENT             : 14
+ID                   : 7
+INT_LITERAL          : 18
+LPAREN               : 17
+MINUS                : 10 15
+MOD                  : 13
+MULTIPLY             : 12
+PLUS                 : 8 16
+RPAREN               : 17
+SEMICOLON            : 3 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+epsilon              : 2
+expression           : 4 8 8 9 10 10 11 11 12 12 13 13 14 14 15 16 17
+identifier           : 9 19
+program              : 0
+semicolon_opt        : 1
+statement            : 5 6
+statement_list       : 1 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list semicolon_opt
+    (5) statement_list -> . statement_list SEMICOLON statement
+    (6) statement_list -> . statement
+    (4) statement -> . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    expression                     shift and go to state 4
+    identifier                     shift and go to state 6
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list . semicolon_opt
+    (5) statement_list -> statement_list . SEMICOLON statement
+    (2) semicolon_opt -> . epsilon
+    (3) semicolon_opt -> . SEMICOLON
+    (20) epsilon -> .
+
+    SEMICOLON       shift and go to state 12
+    $end            reduce using rule 20 (epsilon -> .)
+
+    semicolon_opt                  shift and go to state 11
+    epsilon                        shift and go to state 13
+
+state 3
+
+    (6) statement_list -> statement .
+
+    SEMICOLON       reduce using rule 6 (statement_list -> statement .)
+    $end            reduce using rule 6 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    SEMICOLON       reduce using rule 4 (statement -> expression .)
+    $end            reduce using rule 4 (statement -> expression .)
+    PLUS            shift and go to state 14
+    MINUS           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MULTIPLY        shift and go to state 17
+    MOD             shift and go to state 18
+    EXPONENT        shift and go to state 19
+
+
+state 5
+
+    (16) expression -> PLUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 20
+    identifier                     shift and go to state 6
+
+state 6
+
+    (9) expression -> identifier . EQUALS expression
+    (19) expression -> identifier .
+
+    EQUALS          shift and go to state 21
+    PLUS            reduce using rule 19 (expression -> identifier .)
+    MINUS           reduce using rule 19 (expression -> identifier .)
+    DIVIDE          reduce using rule 19 (expression -> identifier .)
+    MULTIPLY        reduce using rule 19 (expression -> identifier .)
+    MOD             reduce using rule 19 (expression -> identifier .)
+    EXPONENT        reduce using rule 19 (expression -> identifier .)
+    SEMICOLON       reduce using rule 19 (expression -> identifier .)
+    $end            reduce using rule 19 (expression -> identifier .)
+    RPAREN          reduce using rule 19 (expression -> identifier .)
+
+
+state 7
+
+    (15) expression -> MINUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 22
+    identifier                     shift and go to state 6
+
+state 8
+
+    (17) expression -> LPAREN . expression RPAREN
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 23
+    identifier                     shift and go to state 6
+
+state 9
+
+    (18) expression -> INT_LITERAL .
+
+    PLUS            reduce using rule 18 (expression -> INT_LITERAL .)
+    MINUS           reduce using rule 18 (expression -> INT_LITERAL .)
+    DIVIDE          reduce using rule 18 (expression -> INT_LITERAL .)
+    MULTIPLY        reduce using rule 18 (expression -> INT_LITERAL .)
+    MOD             reduce using rule 18 (expression -> INT_LITERAL .)
+    EXPONENT        reduce using rule 18 (expression -> INT_LITERAL .)
+    SEMICOLON       reduce using rule 18 (expression -> INT_LITERAL .)
+    $end            reduce using rule 18 (expression -> INT_LITERAL .)
+    RPAREN          reduce using rule 18 (expression -> INT_LITERAL .)
+
+
+state 10
+
+    (7) identifier -> ID .
+
+    EQUALS          reduce using rule 7 (identifier -> ID .)
+    PLUS            reduce using rule 7 (identifier -> ID .)
+    MINUS           reduce using rule 7 (identifier -> ID .)
+    DIVIDE          reduce using rule 7 (identifier -> ID .)
+    MULTIPLY        reduce using rule 7 (identifier -> ID .)
+    MOD             reduce using rule 7 (identifier -> ID .)
+    EXPONENT        reduce using rule 7 (identifier -> ID .)
+    SEMICOLON       reduce using rule 7 (identifier -> ID .)
+    $end            reduce using rule 7 (identifier -> ID .)
+    RPAREN          reduce using rule 7 (identifier -> ID .)
+
+
+state 11
+
+    (1) program -> statement_list semicolon_opt .
+
+    $end            reduce using rule 1 (program -> statement_list semicolon_opt .)
+
+
+state 12
+
+    (5) statement_list -> statement_list SEMICOLON . statement
+    (3) semicolon_opt -> SEMICOLON .
+    (4) statement -> . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    $end            reduce using rule 3 (semicolon_opt -> SEMICOLON .)
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    statement                      shift and go to state 24
+    expression                     shift and go to state 4
+    identifier                     shift and go to state 6
+
+state 13
+
+    (2) semicolon_opt -> epsilon .
+
+    $end            reduce using rule 2 (semicolon_opt -> epsilon .)
+
+
+state 14
+
+    (8) expression -> expression PLUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 25
+    identifier                     shift and go to state 6
+
+state 15
+
+    (10) expression -> expression MINUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 26
+    identifier                     shift and go to state 6
+
+state 16
+
+    (11) expression -> expression DIVIDE . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 27
+    identifier                     shift and go to state 6
+
+state 17
+
+    (12) expression -> expression MULTIPLY . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 28
+    identifier                     shift and go to state 6
+
+state 18
+
+    (13) expression -> expression MOD . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 29
+    identifier                     shift and go to state 6
+
+state 19
+
+    (14) expression -> expression EXPONENT . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    expression                     shift and go to state 30
+    identifier                     shift and go to state 6
+
+state 20
+
+    (16) expression -> PLUS expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 16 (expression -> PLUS expression .)
+    MINUS           reduce using rule 16 (expression -> PLUS expression .)
+    DIVIDE          reduce using rule 16 (expression -> PLUS expression .)
+    MULTIPLY        reduce using rule 16 (expression -> PLUS expression .)
+    MOD             reduce using rule 16 (expression -> PLUS expression .)
+    EXPONENT        reduce using rule 16 (expression -> PLUS expression .)
+    SEMICOLON       reduce using rule 16 (expression -> PLUS expression .)
+    $end            reduce using rule 16 (expression -> PLUS expression .)
+    RPAREN          reduce using rule 16 (expression -> PLUS expression .)
+
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MULTIPLY        [ shift and go to state 17 ]
+  ! MOD             [ shift and go to state 18 ]
+  ! EXPONENT        [ shift and go to state 19 ]
+
+
+state 21
+
+    (9) expression -> identifier EQUALS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . identifier EQUALS expression
+    (10) expression -> . expression MINUS expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression MOD expression
+    (14) expression -> . expression EXPONENT expression
+    (15) expression -> . MINUS expression
+    (16) expression -> . PLUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . INT_LITERAL
+    (19) expression -> . identifier
+    (7) identifier -> . ID
+
+    MINUS           shift and go to state 7
+    PLUS            shift and go to state 5
+    LPAREN          shift and go to state 8
+    INT_LITERAL     shift and go to state 9
+    ID              shift and go to state 10
+
+    identifier                     shift and go to state 6
+    expression                     shift and go to state 31
+
+state 22
+
+    (15) expression -> MINUS expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 15 (expression -> MINUS expression .)
+    MINUS           reduce using rule 15 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 15 (expression -> MINUS expression .)
+    MULTIPLY        reduce using rule 15 (expression -> MINUS expression .)
+    MOD             reduce using rule 15 (expression -> MINUS expression .)
+    EXPONENT        reduce using rule 15 (expression -> MINUS expression .)
+    SEMICOLON       reduce using rule 15 (expression -> MINUS expression .)
+    $end            reduce using rule 15 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 15 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MULTIPLY        [ shift and go to state 17 ]
+  ! MOD             [ shift and go to state 18 ]
+  ! EXPONENT        [ shift and go to state 19 ]
+
+
+state 23
+
+    (17) expression -> LPAREN expression . RPAREN
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    RPAREN          shift and go to state 32
+    PLUS            shift and go to state 14
+    MINUS           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MULTIPLY        shift and go to state 17
+    MOD             shift and go to state 18
+    EXPONENT        shift and go to state 19
+
+
+state 24
+
+    (5) statement_list -> statement_list SEMICOLON statement .
+
+    SEMICOLON       reduce using rule 5 (statement_list -> statement_list SEMICOLON statement .)
+    $end            reduce using rule 5 (statement_list -> statement_list SEMICOLON statement .)
+
+
+state 25
+
+    (8) expression -> expression PLUS expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 8 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 8 (expression -> expression PLUS expression .)
+    SEMICOLON       reduce using rule 8 (expression -> expression PLUS expression .)
+    $end            reduce using rule 8 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 8 (expression -> expression PLUS expression .)
+    DIVIDE          shift and go to state 16
+    MULTIPLY        shift and go to state 17
+    MOD             shift and go to state 18
+    EXPONENT        shift and go to state 19
+
+  ! DIVIDE          [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! MULTIPLY        [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! MOD             [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! EXPONENT        [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+
+
+state 26
+
+    (10) expression -> expression MINUS expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 10 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 10 (expression -> expression MINUS expression .)
+    SEMICOLON       reduce using rule 10 (expression -> expression MINUS expression .)
+    $end            reduce using rule 10 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 10 (expression -> expression MINUS expression .)
+    DIVIDE          shift and go to state 16
+    MULTIPLY        shift and go to state 17
+    MOD             shift and go to state 18
+    EXPONENT        shift and go to state 19
+
+  ! DIVIDE          [ reduce using rule 10 (expression -> expression MINUS expression .) ]
+  ! MULTIPLY        [ reduce using rule 10 (expression -> expression MINUS expression .) ]
+  ! MOD             [ reduce using rule 10 (expression -> expression MINUS expression .) ]
+  ! EXPONENT        [ reduce using rule 10 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+
+
+state 27
+
+    (11) expression -> expression DIVIDE expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 11 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 11 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 11 (expression -> expression DIVIDE expression .)
+    MULTIPLY        reduce using rule 11 (expression -> expression DIVIDE expression .)
+    MOD             reduce using rule 11 (expression -> expression DIVIDE expression .)
+    SEMICOLON       reduce using rule 11 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 11 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 11 (expression -> expression DIVIDE expression .)
+    EXPONENT        shift and go to state 19
+
+  ! EXPONENT        [ reduce using rule 11 (expression -> expression DIVIDE expression .) ]
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MULTIPLY        [ shift and go to state 17 ]
+  ! MOD             [ shift and go to state 18 ]
+
+
+state 28
+
+    (12) expression -> expression MULTIPLY expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    MINUS           reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    DIVIDE          reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    MULTIPLY        reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    MOD             reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    SEMICOLON       reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    $end            reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    RPAREN          reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    EXPONENT        shift and go to state 19
+
+  ! EXPONENT        [ reduce using rule 12 (expression -> expression MULTIPLY expression .) ]
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MULTIPLY        [ shift and go to state 17 ]
+  ! MOD             [ shift and go to state 18 ]
+
+
+state 29
+
+    (13) expression -> expression MOD expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 13 (expression -> expression MOD expression .)
+    MINUS           reduce using rule 13 (expression -> expression MOD expression .)
+    DIVIDE          reduce using rule 13 (expression -> expression MOD expression .)
+    MULTIPLY        reduce using rule 13 (expression -> expression MOD expression .)
+    MOD             reduce using rule 13 (expression -> expression MOD expression .)
+    SEMICOLON       reduce using rule 13 (expression -> expression MOD expression .)
+    $end            reduce using rule 13 (expression -> expression MOD expression .)
+    RPAREN          reduce using rule 13 (expression -> expression MOD expression .)
+    EXPONENT        shift and go to state 19
+
+  ! EXPONENT        [ reduce using rule 13 (expression -> expression MOD expression .) ]
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MULTIPLY        [ shift and go to state 17 ]
+  ! MOD             [ shift and go to state 18 ]
+
+
+state 30
+
+    (14) expression -> expression EXPONENT expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    PLUS            reduce using rule 14 (expression -> expression EXPONENT expression .)
+    MINUS           reduce using rule 14 (expression -> expression EXPONENT expression .)
+    DIVIDE          reduce using rule 14 (expression -> expression EXPONENT expression .)
+    MULTIPLY        reduce using rule 14 (expression -> expression EXPONENT expression .)
+    MOD             reduce using rule 14 (expression -> expression EXPONENT expression .)
+    SEMICOLON       reduce using rule 14 (expression -> expression EXPONENT expression .)
+    $end            reduce using rule 14 (expression -> expression EXPONENT expression .)
+    RPAREN          reduce using rule 14 (expression -> expression EXPONENT expression .)
+    EXPONENT        shift and go to state 19
+
+  ! EXPONENT        [ reduce using rule 14 (expression -> expression EXPONENT expression .) ]
+  ! PLUS            [ shift and go to state 14 ]
+  ! MINUS           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MULTIPLY        [ shift and go to state 17 ]
+  ! MOD             [ shift and go to state 18 ]
+
+
+state 31
+
+    (9) expression -> identifier EQUALS expression .
+    (8) expression -> expression . PLUS expression
+    (10) expression -> expression . MINUS expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . MOD expression
+    (14) expression -> expression . EXPONENT expression
+
+    SEMICOLON       reduce using rule 9 (expression -> identifier EQUALS expression .)
+    $end            reduce using rule 9 (expression -> identifier EQUALS expression .)
+    RPAREN          reduce using rule 9 (expression -> identifier EQUALS expression .)
+    PLUS            shift and go to state 14
+    MINUS           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MULTIPLY        shift and go to state 17
+    MOD             shift and go to state 18
+    EXPONENT        shift and go to state 19
+
+  ! PLUS            [ reduce using rule 9 (expression -> identifier EQUALS expression .) ]
+  ! MINUS           [ reduce using rule 9 (expression -> identifier EQUALS expression .) ]
+  ! DIVIDE          [ reduce using rule 9 (expression -> identifier EQUALS expression .) ]
+  ! MULTIPLY        [ reduce using rule 9 (expression -> identifier EQUALS expression .) ]
+  ! MOD             [ reduce using rule 9 (expression -> identifier EQUALS expression .) ]
+  ! EXPONENT        [ reduce using rule 9 (expression -> identifier EQUALS expression .) ]
+
+
+state 32
+
+    (17) expression -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    MULTIPLY        reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    MOD             reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    EXPONENT        reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+
